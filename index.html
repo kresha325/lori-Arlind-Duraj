@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LORI Pizzeria & Rent</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="assets/images/favicon.png" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container">
+        <div class="logo">LORI Pizzeria & Rent</div>
+        <div class="actions">
+          <button id="darkModeToggle" aria-label="Toggle dark mode">
+            <span class="icon-moon"></span>
+          </button>
+          <button id="cartBtn" class="cart-btn" aria-label="Open cart">
+            <span class="icon-cart"></span>
+            <span id="cartCount" class="cart-count">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="hero">
+        <img
+          src="assets/images/home.avif"
+          alt="Pizza Banner"
+          class="hero-img"
+        />
+        <div class="hero-content">
+          <h1>Shije Premium, Çmim Lokal</h1>
+          <p>Pica të freskëta, pije të ftohta, shërbim i shpejtë.</p>
+          <a href="#menu" class="scroll-btn">Shiko Menunë</a>
+        </div>
+      </section>
+      <section class="category-filter" id="categoryFilter">
+        <!-- Categories will be injected here -->
+      </section>
+      <section class="search-bar">
+        <input type="text" id="searchInput" placeholder="Kërko produkt..." />
+      </section>
+      <section class="menu" id="menu">
+        <div class="menu-grid" id="menuGrid">
+          <!-- Products will be injected here -->
+        </div>
+      </section>
+    </main>
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+      <div class="modal-content">
+        <button class="close-modal" id="closeProductModal">&times;</button>
+        <img id="modalProductImg" src="" alt="Product Image" />
+        <h2 id="modalProductName"></h2>
+        <p id="modalProductDesc"></p>
+        <div class="modal-footer">
+          <span id="modalProductPrice"></span>
+          <button id="modalAddToCart" class="add-to-cart-btn">
+            Shto në Shportë
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+      <div class="modal-content cart-modal-content">
+        <button class="close-modal" id="closeCartModal">&times;</button>
+        <h2>Shporta</h2>
+        <div id="cartItems"></div>
+        <div class="cart-total">
+          <span>Totali:</span>
+          <span id="cartTotal">0€</span>
+        </div>
+        <form id="orderForm">
+          <input type="text" id="clientName" placeholder="Emri (opsionale)" />
+          <input
+            type="text"
+            id="clientAddress"
+            placeholder="Adresa (opsionale)"
+          />
+          <input
+            type="text"
+            id="clientNotes"
+            placeholder="Shënime (opsionale)"
+          />
+          <div class="order-actions">
+            <button type="button" id="sendWhatsApp" class="order-btn whatsapp">
+              WhatsApp
+            </button>
+            <button type="button" id="sendSMS" class="order-btn sms">
+              SMS
+            </button>
+            <button type="button" id="sendViber" class="order-btn viber">
+              Viber
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="toast" class="toast"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
