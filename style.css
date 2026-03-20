@@ -1,3 +1,27 @@
+/* Flex layout for cart page */
+.cart-flex {
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 2.5rem 0 1.5rem 0;
+}
+.cart-list, .cart-details {
+  flex: 1 1 340px;
+  min-width: 320px;
+  max-width: 520px;
+}
+@media (max-width: 900px) {
+  .cart-flex {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .cart-list, .cart-details {
+    max-width: 98vw;
+  }
+}
 /* Features and button for about section (pizzeria) */
 .about-features {
   list-style: none;
