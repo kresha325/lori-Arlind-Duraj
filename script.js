@@ -398,9 +398,9 @@ function sendOrder(platform) {
   if (cart.length === 0) return showToast('Shporta është bosh!');
   const msg = encodeURIComponent(generateOrderMessage());
   let url = '';
-  if (platform === 'whatsapp') url = `https://wa.me/?text=${msg}`;
-  if (platform === 'sms') url = `sms:?body=${msg}`;
-  if (platform === 'viber') url = `viber://forward?text=${msg}`;
+  if (platform === 'whatsapp') url = `https://wa.me/38344373797?text=${msg}`;
+  if (platform === 'sms') url = `sms:+38344373797?body=${msg}`;
+  if (platform === 'viber') url = `viber://chat?number=%2B38344373797&text=${msg}`;
   window.open(url, '_blank');
   clearCart();
   showToast('Porosia u dërgua me sukses!');
