@@ -1,3 +1,132 @@
+/* Features and button for about section (pizzeria) */
+.about-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.2rem 0;
+}
+.about-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1.05rem;
+  color: #ff9800;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+}
+.about-features i {
+  font-size: 1.2rem;
+  color: #ff9800;
+}
+.about-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff9800 60%, #ffd180 100%);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1.08rem;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  margin-top: 0.5rem;
+}
+.about-btn:hover {
+  background: linear-gradient(90deg, #ffd180 60%, #ff9800 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+/* Flex container for about and rent sections */
+.info-sections-flex {
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 2.5rem 0 1.5rem 0;
+}
+.about-section, .rent-section {
+  flex: 1 1 340px;
+  min-width: 320px;
+  max-width: 520px;
+}
+@media (max-width: 900px) {
+  .info-sections-flex {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .about-section, .rent-section {
+    max-width: 98vw;
+  }
+}
+/* Makina me Qira Section Styles */
+.rent-section {
+  padding: 2.5rem 0 2rem 0;
+}
+.rent-content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 0 1.5rem;
+}
+.rent-content h2 {
+  color: #2196f3;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+.rent-content p {
+  color: #222;
+  font-size: 1.08rem;
+  margin-bottom: 1.2rem;
+}
+.rent-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.2rem 0;
+}
+.rent-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1.05rem;
+  color: #2196f3;
+  margin-bottom: 0.5rem;
+}
+.rent-features i {
+  font-size: 1.2rem;
+  color: #2196f3;
+}
+.rent-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #2196f3 60%, #21cbf3 100%);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1.08rem;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  margin-top: 0.5rem;
+}
+.rent-btn:hover {
+  background: linear-gradient(90deg, #21cbf3 60%, #2196f3 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+/* Card style for about and rent sections */
+.about-section, .rent-section {
+  background: #f7faff;
+  padding: 2.5rem 0 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about-content, .rent-content {
+  max-width: 540px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0, 140, 255, 0.08);
+  padding: 2rem 2rem 1.5rem 2rem;
+  text-align: center;
+}
 /* Cart Details Section Styles */
 .cart-details {
   background: #fffbe7;
@@ -116,7 +245,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  background: #ffd700;
+  background: #ff9800;
   color: #fff;
   box-shadow: var(--shadow);
   border-radius: var(--radius);
@@ -168,15 +297,23 @@
   border-radius: var(--radius);
   transition: background var(--transition), color var(--transition);
 }
-.nav-link:hover {
-  background: var(--primary);
-  color: #fff;
+.about {
+  margin: 0;
 }
-.nav-link.active {
-  background: var(--primary);
-  color: #fff;
+.about-content {
+  margin: 0;
+}
+.about-content h2 {
+  color: #ff9800;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
   font-weight: bold;
-  box-shadow: var(--shadow);
+}
+.about-content p {
+  color: #222;
+  font-size: 1.08rem;
+  margin-bottom: 1.2rem;
+}
 }
 /* LORI Pizzeria & Rent - Modern UI */
 :root {
