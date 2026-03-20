@@ -1,53 +1,53 @@
 {
   "Pizza": [
-    { "id": "pizza_margarita", "name": "Pizza Margarita", "description": "Salcë domate, mozzarella", "price": 5, "image": "assets/images/home.avif" },
-    { "id": "pizza_pershut", "name": "Pizza Përshut", "description": "Përshut, djathë, salcë", "price": 6, "image": "assets/images/home.avif" },
-    { "id": "pizza_fungi", "name": "Pizza Fungi", "description": "Kërpudha, djathë", "price": 6, "image": "assets/images/home.avif" },
-    { "id": "pizza_vegeteriana", "name": "Pizza Vegeteriana", "description": "Perime të freskëta", "price": 6, "image": "assets/images/home.avif" },
-    { "id": "pizza_tuna", "name": "Pizza Tuna", "description": "Ton, misër, djathë", "price": 7, "image": "assets/images/home.avif" },
+    { "id": "pizza_margarita", "name": "Pizza Margarita", "description": "Salcë domate, mozzarella", "price": 5, "image": "assets/images/margarita.jpeg" },
+    { "id": "pizza_pershut", "name": "Pizza Përshut", "description": "Përshut, djathë, salcë", "price": 6, "image": "assets/images/pershut.png" },
+    { "id": "pizza_fungi", "name": "Pizza Fungi", "description": "Kërpudha, djathë", "price": 6, "image": "assets/images/fungi.jpg" },
+    { "id": "pizza_vegeteriana", "name": "Pizza Vegeteriana", "description": "Perime të freskëta", "price": 6, "image": "assets/images/vegan.jpeg" },
+    { "id": "pizza_tuna", "name": "Pizza Tuna", "description": "Ton, misër, djathë", "price": 7, "image": "assets/images/tuna.png" },
     { "id": "pizza_lori", "name": "Pizza Lori", "description": "Specialitet i shtëpisë", "price": 8, "image": "assets/images/home.avif" }
   ],
   "Somun": [
-    { "id": "somun_pershut", "name": "Somun Përshut", "description": "Somun me përshut dhe sos", "price": 3, "image": "assets/images/home.avif" },
-    { "id": "somun_suxhuk", "name": "Somun Suxhuk", "description": "Somun me suxhuk", "price": 3.5, "image": "assets/images/home.avif" },
-    { "id": "somun_mix", "name": "Somun Mix", "description": "Përzierje mishrash", "price": 4, "image": "assets/images/home.avif" }
+    { "id": "somun_pershut", "name": "Somun Përshut", "description": "Somun me përshut dhe sos", "price": 3, "image": "assets/images/somun.jpeg" },
+    { "id": "somun_suxhuk", "name": "Somun Suxhuk", "description": "Somun me suxhuk", "price": 3.5, "image": "assets/images/somun.jpeg" },
+    { "id": "somun_mix", "name": "Somun Mix", "description": "Përzierje mishrash", "price": 4, "image": "assets/images/somun.jpeg" }
   ],
   "Sendviq": [
-    { "id": "sendviq_pershut", "name": "Sendviq Përshut", "description": "Sendviq me përshut", "price": 2.5, "image": "assets/images/home.avif" },
-    { "id": "sendviq_pule", "name": "Sendviq Pule", "description": "Sendviq me mish pule", "price": 3, "image": "assets/images/home.avif" }
+    { "id": "sendviq_pershut", "name": "Sendviq Përshut", "description": "Sendviq me përshut", "price": 2.5, "image": "assets/images/sendviq-pershut.png" },
+    { "id": "sendviq_pule", "name": "Sendviq Pule", "description": "Sendviq me mish pule", "price": 3, "image": "assets/images/sendviq-me-pule.png" }
   ],
   "Pide": [
-    { "id": "pide_pershut", "name": "Pide Përshut", "description": "Pide me përshut", "price": 4, "image": "assets/images/home.avif" },
-    { "id": "pide_suxhuk", "name": "Pide Suxhuk", "description": "Pide me suxhuk", "price": 4.5, "image": "assets/images/home.avif" },
-    { "id": "pide_mish", "name": "Pide me Mish", "description": "Pide me mish të grirë", "price": 5, "image": "assets/images/home.avif" },
-    { "id": "pide_mish_bardhe", "name": "Pide me Mish të Bardhë", "description": "Pide me mish pule", "price": 5, "image": "assets/images/home.avif" }
+    { "id": "pide_pershut", "name": "Pide Përshut", "description": "Pide me përshut", "price": 4, "image": "assets/images/pide-pershut.avif" },
+    { "id": "pide_suxhuk", "name": "Pide Suxhuk", "description": "Pide me suxhuk", "price": 4.5, "image": "assets/images/pide-suxhuk.avif" },
+    { "id": "pide_mish", "name": "Pide me Mish", "description": "Pide me mish të grirë", "price": 5, "image": "assets/images/pide-mish.jpg" },
+    { "id": "pide_mish_bardhe", "name": "Pide me Mish të Bardhë", "description": "Pide me mish pule", "price": 5, "image": "assets/images/pide-pule.jpg" }
   ],
   "Skara": [
-    { "id": "hamburger", "name": "Hamburger", "description": "Burger klasik", "price": 3, "image": "assets/images/home.avif" },
-    { "id": "qofte", "name": "Qofte", "description": "Qofte të pjekura", "price": 4, "image": "assets/images/home.avif" },
-    { "id": "qebapa", "name": "Qebapa", "description": "Qebapa tradicionale", "price": 4, "image": "assets/images/home.avif" },
-    { "id": "pleskavic", "name": "Pleskavic", "description": "Pleskavic klasike", "price": 4, "image": "assets/images/home.avif" },
-    { "id": "pleskavic_sos", "name": "Pleskavic me Sos", "description": "Pleskavic me salcë speciale", "price": 4.5, "image": "assets/images/home.avif" },
-    { "id": "pleskavic_sharri", "name": "Pleskavic Sharri", "description": "Pleskavic speciale", "price": 5, "image": "assets/images/home.avif" },
-    { "id": "file_pule_1_2", "name": "File Pule 1/2", "description": "Gjysmë file pule", "price": 3.5, "image": "assets/images/home.avif" },
-    { "id": "file_pule_1", "name": "File Pule 1", "description": "File pule i plotë", "price": 6, "image": "assets/images/home.avif" },
-    { "id": "file_pule_sos", "name": "File Pule me Sos", "description": "File pule me salcë", "price": 6.5, "image": "assets/images/home.avif" },
-    { "id": "kombinim_vogel", "name": "Kombinim i Vogël", "description": "Mix mishrash", "price": 7, "image": "assets/images/home.avif" },
-    { "id": "suxhuk", "name": "Suxhuk", "description": "Suxhuk i pjekur", "price": 3.5, "image": "assets/images/home.avif" }
+    { "id": "hamburger", "name": "Hamburger", "description": "Burger klasik", "price": 3, "image": "assets/images/hamburger.jpg" },
+    { "id": "qofte", "name": "Qofte", "description": "Qofte të pjekura", "price": 4, "image": "assets/images/qofte.jpeg" },
+    { "id": "qebapa", "name": "Qebapa", "description": "Qebapa tradicionale", "price": 4, "image": "assets/images/qebapa.jpeg" },
+    { "id": "pleskavic", "name": "Pleskavic", "description": "Pleskavic klasike", "price": 4, "image": "assets/images/pleskavic.jpg" },
+    { "id": "pleskavic_sos", "name": "Pleskavic me Sos", "description": "Pleskavic me salcë speciale", "price": 4.5, "image": "assets/images/plesk-sos.webp" },
+    { "id": "pleskavic_sharri", "name": "Pleskavic Sharri", "description": "Pleskavic speciale", "price": 5, "image": "assets/images/plesk-sharri.avif" },
+    { "id": "file_pule_1_2", "name": "File Pule 1/2", "description": "Gjysmë file pule", "price": 3.5, "image": "assets/images/file-gjys.avif" },
+    { "id": "file_pule_1", "name": "File Pule 1", "description": "File pule i plotë", "price": 6, "image": "assets/images/file-pule.jpeg" },
+    { "id": "file_pule_sos", "name": "File Pule me Sos", "description": "File pule me salcë", "price": 6.5, "image": "assets/images/file-sos.jpeg" },
+    { "id": "kombinim_vogel", "name": "Kombinim i Vogël", "description": "Mix mishrash", "price": 7, "image": "assets/images/kombi.jpg" },
+    { "id": "suxhuk", "name": "Suxhuk", "description": "Suxhuk i pjekur", "price": 3.5, "image": "assets/images/suxhuk.webp" }
   ],
   "Sallata": [
-    { "id": "sallata_shope", "name": "Sallata Shope", "description": "Domate, kastravec, djathë", "price": 2.5, "image": "assets/images/home.avif" },
-    { "id": "sallata_qobane", "name": "Sallata Qobane", "description": "Sallatë tradicionale", "price": 2.5, "image": "assets/images/home.avif" }
+    { "id": "sallata_shope", "name": "Sallata Shope", "description": "Domate, kastravec, djathë", "price": 2.5, "image": "assets/images/shope.jpg" },
+    { "id": "sallata_qobane", "name": "Sallata Qobane", "description": "Sallatë tradicionale", "price": 2.5, "image": "assets/images/qobane.jpeg" }
   ],
   "Sides": [
-    { "id": "pomfrit", "name": "Pomfrit", "description": "Patate të skuqura", "price": 2, "image": "assets/images/home.avif" },
-    { "id": "pomfrit_djath", "name": "Pomfrit Djath", "description": "Pomfrit me djathë", "price": 3, "image": "assets/images/home.avif" }
+    { "id": "pomfrit", "name": "Pomfrit", "description": "Patate të skuqura", "price": 2, "image": "assets/images/pomfrit.jpg" },
+    { "id": "pomfrit_djath", "name": "Pomfrit Djath", "description": "Pomfrit me djathë", "price": 3, "image": "assets/images/pome-djath.avif" }
   ],
   "Breakfast": [
-    { "id": "omlet_pershut", "name": "Omlet Përshut", "description": "Omlet me përshut", "price": 3, "image": "assets/images/home.avif" },
-    { "id": "omlet_suxhuk", "name": "Omlet Suxhuk", "description": "Omlet me suxhuk", "price": 3, "image": "assets/images/home.avif" }
+    { "id": "omlet_pershut", "name": "Omlet Përshut", "description": "Omlet me përshut", "price": 3, "image": "assets/images/omlet-p.webp" },
+    { "id": "omlet_suxhuk", "name": "Omlet Suxhuk", "description": "Omlet me suxhuk", "price": 3, "image": "assets/images/omlet-s.webp" }
   ],
   "Special": [
-    { "id": "lahmaxhun", "name": "Lahmaxhun", "description": "Lahmaxhun tradicional", "price": 2.5, "image": "assets/images/home.avif" }
+    { "id": "lahmaxhun", "name": "Lahmaxhun", "description": "Lahmaxhun tradicional", "price": 2.5, "image": "assets/images/lahmaxhun.jpg" }
   ]
 }
