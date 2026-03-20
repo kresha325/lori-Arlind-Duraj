@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping cart - LORI Pizzeria & Rent</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+    <script src="script.js" defer></script>
+  </head>
+  <body style="background: #f6f8f9">
+    <div style="margin: 2rem 0 0 2rem">
+      <a
+        href="menu.html"
+        style="
+          text-decoration: none;
+          color: inherit;
+          font-size: 1.2rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        "
+      >
+        <i class="fa fa-arrow-left"></i> Kthehu te menu
+      </a>
+    </div>
+    <div class="cart-container">
+      <div class="cart-flex">
+        <!-- Shopping Cart List -->
+        <div class="cart-list">
+          <h2 class="cart-title">Shopping cart</h2>
+          <div id="cartInfo" class="cart-info">
+            You have 0 items in your cart
+          </div>
+          <div id="cartItemsList"></div>
+        </div>
+        <!-- Card Details / Order Actions -->
+        <div class="cart-details">
+          <h2 class="cart-details-title">Porosit tani</h2>
+          <div class="cart-details-inputs">
+            <input
+              id="clientName"
+              type="text"
+              placeholder="Emri (opsionale)"
+              class="cart-input"
+            />
+            <input
+              id="clientAddress"
+              type="text"
+              placeholder="Adresa (opsionale)"
+              class="cart-input"
+            />
+            <input
+              id="clientNotes"
+              type="text"
+              placeholder="Shënime (opsionale)"
+              class="cart-input"
+            />
+          </div>
+          <div class="cart-details-actions">
+            <button id="sendWhatsApp" class="cart-btn-whatsapp">
+              Dërgo me WhatsApp
+            </button>
+            <button id="sendSMS" class="cart-btn-sms">Dërgo me SMS</button>
+            <button id="sendViber" class="cart-btn-viber">
+              Dërgo me Viber
+            </button>
+          </div>
+          <div class="cart-details-total">
+            <span>Totali:</span>
+            <span id="cartTotal">0€</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Render cart items on cart.html using the same logic as script.js
+      document.addEventListener("DOMContentLoaded", function () {
+        // Wait for script.js to load and then call updateCartPageUI
+        if (typeof updateCartPageUI === "function") {
+          updateCartPageUI();
+        } else {
+          // Fallback: try after a short delay
+          setTimeout(function () {
+            if (typeof updateCartPageUI === "function") updateCartPageUI();
+          }, 200);
+        }
+      });
+    </script>
+  </body>
+</html>

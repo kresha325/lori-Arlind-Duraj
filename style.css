@@ -1,3 +1,183 @@
+/* Cart Details Section Styles */
+.cart-details {
+  background: #fffbe7;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(255, 168, 0, 0.10);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  margin-left: 1.5rem;
+  min-width: 320px;
+  max-width: 370px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.cart-details-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #ff9800;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+.cart-details-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: 1.2rem;
+}
+.cart-input {
+  border: 1.5px solid #ffd180;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  background: #fff;
+  transition: border 0.2s;
+}
+.cart-input:focus {
+  border: 1.5px solid #ff9800;
+  outline: none;
+}
+.cart-details-actions {
+  display: flex;
+  gap: 0.7rem;
+  margin-bottom: 1.2rem;
+  justify-content: center;
+}
+.cart-btn-whatsapp, .cart-btn-sms, .cart-btn-viber {
+  flex: 1 1 0;
+  padding: 0.7rem 0.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.cart-btn-whatsapp { background: linear-gradient(90deg, #25d366 60%, #128c7e 100%); color: #fff; }
+.cart-btn-whatsapp:hover { background: linear-gradient(90deg, #128c7e 60%, #25d366 100%); transform: translateY(-2px) scale(1.04); }
+.cart-btn-sms { background: linear-gradient(90deg, #ffd600 60%, #ff9800 100%); color: #333; }
+.cart-btn-sms:hover { background: linear-gradient(90deg, #ff9800 60%, #ffd600 100%); transform: translateY(-2px) scale(1.04); }
+.cart-btn-viber { background: linear-gradient(90deg, #8f5db7 60%, #6f3faa 100%); color: #fff; }
+.cart-btn-viber:hover { background: linear-gradient(90deg, #6f3faa 60%, #8f5db7 100%); transform: translateY(-2px) scale(1.04); }
+.cart-details-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: #ff9800;
+  background: #fff3e0;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 1px 4px rgba(255, 168, 0, 0.07);
+}
+/* Top icon styles for menu.html */
+/* Footer social icons white */
+/* Footer social icons white and visible */
+/* Footer social icons: pure white, bigger, no shadow */
+/* Footer social icons: white with dark background for visibility */
+/* Footer social icons: white with thin border for visibility */
+/* Footer social icons: white, round, subtle shadow, correct Font Awesome shape */
+.footer .social-icons i {
+  border-radius: 50%;
+  padding: 8px;
+  opacity: 1 !important;
+  /* font-weight: bold; */
+  background: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Social icon colors */
+.social-icon-facebook {
+  color: #4267b2;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  padding: 4px;
+}
+.social-icon-instagram {
+  color: #e1306c;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  padding: 4px;
+}
+.social-icon-whatsapp {
+  color: #25d366;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  padding: 4px;
+}
+/* Footer styles moved from inline */
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffd700;
+  color: #fff;
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+}
+.footer-left, .footer-center, .footer-right {
+  flex: 1 1 220px;
+  min-width: 220px;
+}
+.footer-center {
+  text-align: center;
+  color: #fff;
+}
+.footer-right {
+  text-align: right;
+  color: #fff;
+}
+.footer-title {
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.footer-info {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #fff;
+}
+.footer-hours {
+  font-size: 0.95rem;
+  color: #fff;
+}
+.footer-map {
+  border-radius: 12px;
+  border: none;
+  box-shadow: var(--shadow);
+}
+.social-icons {
+  display: flex;
+  gap: 0.7rem;
+  justify-content: flex-end;
+}
+/* Navbar links styled like cart button */
+.nav-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius);
+  transition: background var(--transition), color var(--transition);
+}
+.nav-link:hover {
+  background: var(--primary);
+  color: #fff;
+}
+.nav-link.active {
+  background: var(--primary);
+  color: #fff;
+  font-weight: bold;
+  box-shadow: var(--shadow);
+}
 /* LORI Pizzeria & Rent - Modern UI */
 :root {
   --primary: #ffb347;
@@ -26,7 +206,7 @@ body {
   position: sticky; top: 0; z-index: 100;
   background: var(--bg);
   box-shadow: var(--shadow);
-  padding: 0.5rem 0;
+  padding: 1rem 0 0.5rem 0;
 }
 .navbar .container {
   display: flex; align-items: center; justify-content: space-between;
@@ -145,6 +325,16 @@ body {
   background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
   padding: 2rem 1.5rem; max-width: 400px; width: 95vw; position: relative; text-align: center;
   animation: modalPop 0.25s;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+/* Product modal image responsive and limited */
+#productModal img, .modal-content img {
+  max-width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
 }
 @keyframes modalPop { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 .close-modal {
@@ -168,14 +358,45 @@ body {
 .cart-item-qty {
   display: flex; align-items: center; gap: 0.3rem;
 }
+
 .qty-btn {
-  background: var(--primary); color: #fff; border: none; border-radius: 50%; width: 28px; height: 28px;
-  font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: background var(--transition);
+  background: linear-gradient(135deg, #ff9800 0%, #ffb347 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: background 0.2s, transform 0.15s;
+  margin: 0 2px;
 }
-.qty-btn:hover { background: #ffa500; }
+.qty-btn:hover {
+  background: linear-gradient(135deg, #ffa500 0%, #ff9800 100%);
+  transform: scale(1.08);
+}
 .cart-item-price { font-size: 1rem; color: var(--primary); font-weight: bold; margin-top: 0.2rem; }
 .delete-item {
-  background: none; border: none; color: #e74c3c; font-size: 1.2rem; cursor: pointer; margin-left: 0.5rem;
+  background: linear-gradient(135deg, #e74c3c 0%, #ff7675 100%);
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: background 0.2s, transform 0.15s;
+}
+.delete-item:hover {
+  background: linear-gradient(135deg, #ff7675 0%, #e74c3c 100%);
+  transform: scale(1.08) rotate(-10deg);
 }
 .cart-total {
   display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: bold; margin-bottom: 1rem;
