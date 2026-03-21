@@ -1,4 +1,11 @@
 @media (max-width: 700px) {
+    .navbar {
+      background-color: #fff8e1 !important;
+      background-image: url("assets/images/9805773.jpg") !important;
+      background-repeat: no-repeat !important;
+      background-size: cover !important;
+      border-bottom: 1.5px solid #ff9800;
+    }
   .logo-img {
     height: 54px;
     width: auto;
@@ -72,15 +79,17 @@
     align-items: center;
     justify-content: center;
     width: 100vw;
-    height:80px;
-    padding: 0 8vw;
+    height: 60px;
+    padding: 0 2vw;
     box-sizing: border-box;
     gap: 0;
+    overflow: hidden;
   }
   .logo-img {
-    width: 100%;
-    max-width: 420px;
-    height: 70px;
+    width: auto;
+    height: 64px;
+    max-width: 220px;
+    max-height: 68px;
     object-fit: contain;
     margin: 0 auto;
     display: block;

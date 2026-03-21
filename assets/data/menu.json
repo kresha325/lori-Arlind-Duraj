@@ -54,7 +54,7 @@
     { "id": "file_pule_sos", "name": "File Pule me Sos", "description": "File pule me salcë", "price": 4.5, "image": "assets/images/file-sos.jpeg" },
     { "id": "kombinim_vogel", "name": "Kombinim i Vogël", "description": "Mix mishrash", "price": 5, "image": "assets/images/kombi.jpg" },
     { "id": "suxhuk_1", "name": "Suxhuk Gjysmë Porcion", "description": "Suxhuk i pjekur", "price": 2.5, "image": "assets/images/suxhuk.webp" },
-    { "id": "suxhuk_2", "name": "Suxhuk Porcion", "description": "Suxhuk i pjekur", "price": 4, "image": "assets/images/suxhuk-sos.webp" }
+    { "id": "suxhuk_2", "name": "Suxhuk Porcion", "description": "Suxhuk i pjekur", "price": 4, "image": "assets/images/suxhuk.webp" }
   ],
   "Sallata": [
     { "id": "sallata_shope", "name": "Sallata Shope", "description": "Domate, kastravec, djathë", "price": 2, "image": "assets/images/shope.jpg" },
