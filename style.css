@@ -1,6 +1,27 @@
+@media (max-width: 700px) {
+  .logo-img {
+    height: 54px;
+    width: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  body {
+    padding-bottom: 64px; /* Lartësia e bottom navbar + pak hapësirë */
+  }
+}
 /* Ngjyra portokalli për tekstin nën logon në navbar */
 .logo-sub {
   color: #ff9800 !important;
+  .logo-sub {
+    color: #ff9800 !important;
+    font-size: 1.1rem;
+    text-align: left;
+    margin-top: 0;
+    font-weight: 500;
+    white-space: nowrap;
+    display: block;
+  }
   font-size: 1.1rem;
   text-align: center;
   margin-top: 0.1rem;
@@ -21,13 +42,20 @@
   display: block;
   filter: drop-shadow(0 2px 8px rgba(0,0,0,0.10));
 }
-/* Desktop nav visible only on desktop */
-.logo-main {
-  color: #ff9800 !important;
-  font-size: 1.7rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-align: center;
+.logo-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.7rem;
+  width: auto;
+}
+.logo-img {
+  margin-right: 0.7rem;
+}
+.logo-sub {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
 }
 .desktop-nav { display: flex; }
 @media (max-width: 700px) {
@@ -40,28 +68,25 @@
   }
   .logo-center {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 100vw;
+    height:80px;
+    padding: 0 8vw;
+    box-sizing: border-box;
+    gap: 0;
   }
-  .logo-main {
-    font-size: 1.7rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-    color: #ff9800 !important;
-    text-align: center;
-  }
-  /* Ensure .logo-main is orange on desktop too */
-  .logo-main {
-    color: #ff9800 !important;
+  .logo-img {
+    width: 100%;
+    max-width: 420px;
+    height: 70px;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
   }
   .logo-sub {
-    font-size: 1.1rem;
-    color: #222;
-    text-align: center;
-    margin-top: 0.1rem;
-    font-weight: 500;
+    display: none !important;
   }
   .bottom-navbar {
     display: flex;
