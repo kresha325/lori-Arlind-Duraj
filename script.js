@@ -83,12 +83,12 @@ function initNavbarEvents() {
 
   if (window.cartBtn) {
     window.cartBtn.onclick = () => {
-      window.location.href = 'cart.html';
+      window.location.href = 'cart';
     };
   }
   if (window.cartBtnBottom) {
     window.cartBtnBottom.onclick = () => {
-      window.location.href = 'cart.html';
+      window.location.href = 'cart';
     };
   }
   if (window.darkModeToggle) {
