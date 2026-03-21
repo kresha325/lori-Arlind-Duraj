@@ -1,3 +1,176 @@
+/* Ngjyra portokalli për tekstin nën logon në navbar */
+.logo-sub {
+  color: #ff9800 !important;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 0.1rem;
+  font-weight: 500;
+}
+/* Logo image styles for navbar and footer */
+.logo-img {
+  height: 38px;
+  width: auto;
+  margin-right: 0.7rem;
+  vertical-align: middle;
+  display: inline-block;
+}
+.logo-img-footer {
+  height: 44px;
+  width: auto;
+  margin-bottom: 0.5rem;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.10));
+}
+/* Desktop nav visible only on desktop */
+.logo-main {
+  color: #ff9800 !important;
+  font-size: 1.7rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.desktop-nav { display: flex; }
+@media (max-width: 700px) {
+  .desktop-nav { display: none !important; }
+  .navbar .container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 0 0.3rem 0;
+  }
+  .logo-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+  }
+  .logo-main {
+    font-size: 1.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #ff9800 !important;
+    text-align: center;
+  }
+  /* Ensure .logo-main is orange on desktop too */
+  .logo-main {
+    color: #ff9800 !important;
+  }
+  .logo-sub {
+    font-size: 1.1rem;
+    color: #222;
+    text-align: center;
+    margin-top: 0.1rem;
+    font-weight: 500;
+  }
+  .bottom-navbar {
+    display: flex;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    width: 100vw;
+    background: #fffbe7;
+    border-top: 1.5px solid #ffd180;
+    box-shadow: 0 -2px 12px rgba(255,168,0,0.07);
+    z-index: 1000;
+    height: 56px;
+  }
+}
+@media (min-width: 701px) {
+  .bottom-navbar { display: none !important; }
+}
+/* Bottom navbar for mobile */
+.bottom-navbar {
+  display: none;
+}
+.bottom-nav-btn {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0 0.2rem 0;
+  color: #ff9800;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  text-decoration: none;
+  position: relative;
+}
+.bottom-nav-btn:active, .bottom-nav-btn:focus {
+  background: #fffbe7;
+}
+.bottom-nav-label {
+  font-size: 0.85rem;
+  margin-top: 2px;
+}
+.cart-count-badge {
+  position: absolute;
+  top: 2px;
+  right: 18px;
+  background: #ff9800;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  font-weight: bold;
+  z-index: 2;
+}
+@media (max-width: 700px) {
+  .navbar .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 0 0.3rem 0;
+  }
+  .logo-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+  }
+  .logo-main {
+    font-size: 1.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #ff9800;
+    text-align: center;
+  }
+  .logo-sub {
+    font-size: 1.1rem;
+    color: #222;
+    text-align: center;
+    margin-top: 0.1rem;
+    font-weight: 500;
+  }
+  .navbar nav, .navbar .actions {
+    display: none !important;
+  }
+  .bottom-navbar {
+    display: flex;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    width: 100vw;
+    background: #fffbe7;
+    border-top: 1.5px solid #ffd180;
+    box-shadow: 0 -2px 12px rgba(255,168,0,0.07);
+    z-index: 1000;
+    height: 56px;
+  }
+}
+/* Reduce space when cart is empty (especially on mobile) */
+@media (max-width: 600px) {
+  .cart-list:has(.cart-info:only-child),
+  .cart-list:has(#cartItemsList:empty) {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .cart-details {
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+  }
+}
 /* Flex layout for cart page */
 .cart-flex {
   display: flex;
@@ -364,10 +537,18 @@ body {
   transition: background var(--transition), color var(--transition);
 }
 .navbar {
-  position: sticky; top: 0; z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 100;
   background: var(--bg);
   box-shadow: var(--shadow);
   padding: 1rem 0 0.5rem 0;
+}
+
+body {
+  padding-top: 4.2rem; /* Lartësia e navbar-it për të mos u mbuluar përmbajtja */
 }
 .navbar .container {
   display: flex; align-items: center; justify-content: space-between;

@@ -61,6 +61,58 @@ window.updateCartPageUI = function() {
   });
 };
 // LORI Pizzeria & Rent - Main JS
+// Reference to the order form container (cart-details-inputs)
+const orderForm = document.querySelector('.cart-details-inputs');
+
+// Funksion për të inicializuar eventet e navbar-it pasi të jetë ngarkuar dinamikisht
+function initNavbarEvents() {
+  window.cartBtn = document.getElementById('cartBtn');
+  window.cartModal = document.getElementById('cartModal');
+  window.closeCartModal = document.getElementById('closeCartModal');
+  window.cartCount = document.getElementById('cartCount');
+  window.cartItemsDiv = document.getElementById('cartItems');
+  window.cartTotal = document.getElementById('cartTotal');
+  window.darkModeToggle = document.getElementById('darkModeToggle');
+  window.searchInput = document.getElementById('searchInput');
+  window.toast = document.getElementById('toast');
+
+  // Bottom navbar elements
+  window.cartBtnBottom = document.getElementById('cartBtnBottom');
+  window.cartCountBottom = document.getElementById('cartCountBottom');
+  window.darkModeToggleBottom = document.getElementById('darkModeToggleBottom');
+
+  if (window.cartBtn) {
+    window.cartBtn.onclick = () => {
+      window.location.href = 'cart.html';
+    };
+  }
+  if (window.cartBtnBottom) {
+    window.cartBtnBottom.onclick = () => {
+      window.location.href = 'cart.html';
+    };
+  }
+  if (window.darkModeToggle) {
+    window.darkModeToggle.onclick = () => {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark'));
+    };
+  }
+  if (window.darkModeToggleBottom) {
+    window.darkModeToggleBottom.onclick = () => {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark'));
+    };
+  }
+  // Sync cart count for both navbars
+  function syncCartCount() {
+    const count = cart.reduce((a, b) => a + b.qty, 0);
+    if (window.cartCount) window.cartCount.textContent = count;
+    if (window.cartCountBottom) window.cartCountBottom.textContent = count;
+  }
+  syncCartCount();
+  // Also update on cart changes
+  window.updateCartCount = syncCartCount;
+}
 
 // Dynamically load navbar and footer on every page
 window.addEventListener('DOMContentLoaded', function () {
@@ -153,6 +205,7 @@ function updateCart() {
   const cartItemsDivEl = window.cartItemsDiv || document.getElementById('cartItems');
   const cartTotalEl = window.cartTotal || document.getElementById('cartTotal');
   if (cartCountEl) cartCountEl.textContent = cart.reduce((a, b) => a + b.qty, 0);
+  if (window.cartCountBottom) window.cartCountBottom.textContent = cart.reduce((a, b) => a + b.qty, 0);
   if (cartItemsDivEl && cartTotalEl) {
     cartItemsDivEl.innerHTML = '';
     if (cart.length === 0) {
@@ -184,37 +237,42 @@ function updateCart() {
     cartTotalEl.textContent = cart.reduce((a, b) => a + b.price * b.qty, 0) + '€';
     saveCart();
   }
+  if (typeof window.updateCartCount === 'function') window.updateCartCount();
 }
 
 // Only run menu logic if menuGrid and categoryFilter exist (i.e., on menu.html)
 if (menuGrid && categoryFilter) {
+  // Fix: define cartItemsDivEl and cartTotalEl in this scope
+  const cartItemsDivEl = window.cartItemsDiv || document.getElementById('cartItems');
+  const cartTotalEl = window.cartTotal || document.getElementById('cartTotal');
 
   // Smooth scroll for menu button
   const scrollBtn = document.querySelector('.scroll-btn');
   if (scrollBtn) {
-    scrollBtn.onclick = e => {
-      e.preventDefault();
-      document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
-    };
-  }
-}
-
-// Funksion për të inicializuar eventet e navbar-it pasi të jetë ngarkuar dinamikisht
-function initNavbarEvents() {
-  window.cartBtn = document.getElementById('cartBtn');
-  window.cartModal = document.getElementById('cartModal');
-  window.closeCartModal = document.getElementById('closeCartModal');
-  window.cartCount = document.getElementById('cartCount');
-  window.cartItemsDiv = document.getElementById('cartItems');
-  window.cartTotal = document.getElementById('cartTotal');
-  window.darkModeToggle = document.getElementById('darkModeToggle');
-  window.searchInput = document.getElementById('searchInput');
-  window.toast = document.getElementById('toast');
-
-  if (window.cartBtn) {
-    window.cartBtn.onclick = () => {
-      window.location.href = 'cart.html';
-    };
+        cart.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <img src="${item.image}" class="cart-item-img" alt="${item.name}">
+          <div class="cart-item-info">
+            <div class="cart-item-title">${item.name}</div>
+            <div class="cart-item-desc">${item.description}</div>
+          </div>
+          <div class="cart-item-controls">
+            <div class="cart-item-qty">
+              <button class="qty-btn" onclick="window.changeQty(${idx}, -1)">-</button>
+              <span>${item.qty}</span>
+              <button class="qty-btn" onclick="window.changeQty(${idx}, 1)">+</button>
+            </div>
+            <div class="cart-item-price">${(item.price * item.qty).toFixed(2)}€</div>
+            <button class="delete-item" onclick="window.deleteCartItem(${idx})">&times;</button>
+          </div>
+        `;
+        cartItemsDivEl.appendChild(div);
+      });
+      if (cartTotalEl) {
+        cartTotalEl.textContent = cart.reduce((a, b) => a + b.price * b.qty, 0) + '€';
+      }
   }
   if (window.closeCartModal && window.cartModal) {
     window.closeCartModal.onclick = () => window.cartModal.classList.remove('show');
@@ -285,17 +343,14 @@ if (menuGrid && categoryFilter) {
     document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
     [...categoryFilter.children].find(btn => btn.textContent === category).classList.add('active');
 
+    let menuToShow = [];
     if (category === 'Të gjitha') {
-      filteredMenu = flattenMenu(menuData);
+      menuToShow = flattenMenu(menuData);
     } else {
       filteredMenu = menuData[category] || [];
     }
-
-    renderMenu(
-      category === 'Të gjitha'
-        ? flattenMenu(menuData)
-        : filteredMenu.map(item => ({ ...item, category }))
-    );
+    renderMenu(menuToShow);
+    renderMenu(filteredMenu);
   }
 
   function renderMenu(menu) {

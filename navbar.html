@@ -1,11 +1,14 @@
 <header class="navbar">
-  <div class="container">
-    <div class="logo">LORI Pizzeria & Rent</div>
-    <nav>
+  <div class="container navbar-top">
+    <div class="logo-center">
+      <img src="assets/images/logo.png" alt="LORI Logo" class="logo-img" />
+      <div class="logo-sub">Pizzeria & Rent</div>
+    </div>
+    <nav class="desktop-nav">
       <a href="index.html" class="nav-link">Home</a>
       <a href="menu.html" class="nav-link">Menu</a>
     </nav>
-    <div class="actions">
+    <div class="actions desktop-nav">
       <button id="darkModeToggle" aria-label="Toggle dark mode">
         <span class="icon-moon"></span>
       </button>
@@ -16,3 +19,27 @@
     </div>
   </div>
 </header>
+<!-- Bottom navbar for mobile -->
+<nav class="bottom-navbar">
+  <a href="index.html" class="bottom-nav-btn" aria-label="Home">
+    <span class="fa fa-home"></span>
+    <span class="bottom-nav-label">Home</span>
+  </a>
+  <a href="menu.html" class="bottom-nav-btn" aria-label="Menu">
+    <span class="fa fa-utensils"></span>
+    <span class="bottom-nav-label">Menu</span>
+  </a>
+  <button
+    id="darkModeToggleBottom"
+    class="bottom-nav-btn"
+    aria-label="Toggle dark mode"
+  >
+    <span class="fa fa-moon"></span>
+    <span class="bottom-nav-label">Dark</span>
+  </button>
+  <button id="cartBtnBottom" class="bottom-nav-btn" aria-label="Open cart">
+    <span class="fa fa-shopping-cart"></span>
+    <span class="bottom-nav-label">Shporta</span>
+    <span id="cartCountBottom" class="cart-count-badge">0</span>
+  </button>
+</nav>
