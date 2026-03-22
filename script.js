@@ -347,10 +347,9 @@ if (menuGrid && categoryFilter) {
     if (category === 'Të gjitha') {
       menuToShow = flattenMenu(menuData);
     } else {
-      filteredMenu = menuData[category] || [];
+      menuToShow = (menuData[category] || []).map(item => ({ ...item, category }));
     }
     renderMenu(menuToShow);
-    renderMenu(filteredMenu);
   }
 
   function renderMenu(menu) {
