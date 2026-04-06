@@ -20,14 +20,14 @@
     { "id": "pizza_lori_3", "name": "Pizza Lori e Madhe", "description": "Specialitet i shtëpisë", "price": 7, "image": "assets/images/home.avif" }
   ],
   "Somun": [
-    { "id": "somun_pershut_1", "name": "Somun Përshut i Vogel", "description": "Somun me përshut dhe sos", "price": 2.5, "image": "assets/images/somun.jpeg" },
-    { "id": "somun_pershut_2", "name": "Somun Përshut i Mesem", "description": "Somun me përshut dhe sos", "price": 3.5, "image": "assets/images/somun.jpeg" },
+    { "id": "somun_pershut_1", "name": "Somun Përshut i Vogel", "description": "Somun me përshut dhe sos", "price": 3, "image": "assets/images/somun.jpeg" },
+    { "id": "somun_pershut_2", "name": "Somun Përshut i Mesem", "description": "Somun me përshut dhe sos", "price": 4, "image": "assets/images/somun.jpeg" },
     { "id": "somun_pershut_3", "name": "Somun Përshut i Madh", "description": "Somun me përshut dhe sos", "price": 5, "image": "assets/images/somun.jpeg" },
-    { "id": "somun_suxhuk_1", "name": "Somun Suxhuk i Vogel", "description": "Somun me suxhuk", "price": 2.5, "image": "assets/images/somun.jpeg" },
-    { "id": "somun_suxhuk_2", "name": "Somun Suxhuk i Mesem", "description": "Somun me suxhuk", "price": 3.5, "image": "assets/images/somun.jpeg" },
+    { "id": "somun_suxhuk_1", "name": "Somun Suxhuk i Vogel", "description": "Somun me suxhuk", "price": 3, "image": "assets/images/somun.jpeg" },
+    { "id": "somun_suxhuk_2", "name": "Somun Suxhuk i Mesem", "description": "Somun me suxhuk", "price": 4, "image": "assets/images/somun.jpeg" },
     { "id": "somun_suxhuk_3", "name": "Somun Suxhuk i Madh", "description": "Somun me suxhuk", "price": 5, "image": "assets/images/somun.jpeg" },
-    { "id": "somun_mix_1", "name": "Somun Mix i Vogel", "description": "Përzierje mishrash", "price": 2.5, "image": "assets/images/somun.jpeg" },
-    { "id": "somun_mix_2", "name": "Somun Mix i Mesem", "description": "Përzierje mishrash", "price": 3.5, "image": "assets/images/somun.jpeg" },
+    { "id": "somun_mix_1", "name": "Somun Mix i Vogel", "description": "Përzierje mishrash", "price": 3, "image": "assets/images/somun.jpeg" },
+    { "id": "somun_mix_2", "name": "Somun Mix i Mesem", "description": "Përzierje mishrash", "price": 4, "image": "assets/images/somun.jpeg" },
     { "id": "somun_mix_3", "name": "Somun Mix i Madh", "description": "Përzierje mishrash", "price": 5, "image": "assets/images/somun.jpeg" }
   ],
   "Sendviq": [
