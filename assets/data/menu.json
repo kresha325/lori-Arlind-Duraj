@@ -26,9 +26,9 @@
     { "id": "somun_suxhuk_1", "name": "Somun Suxhuk i Vogel", "description": "Somun me suxhuk", "price": 3, "image": "assets/images/somun.jpeg" },
     { "id": "somun_suxhuk_2", "name": "Somun Suxhuk i Mesem", "description": "Somun me suxhuk", "price": 4, "image": "assets/images/somun.jpeg" },
     { "id": "somun_suxhuk_3", "name": "Somun Suxhuk i Madh", "description": "Somun me suxhuk", "price": 5, "image": "assets/images/somun.jpeg" },
-    { "id": "somun_mix_1", "name": "Somun Mix i Vogel", "description": "Përzierje mishrash", "price": 3, "image": "assets/images/somun.jpeg" },
-    { "id": "somun_mix_2", "name": "Somun Mix i Mesem", "description": "Përzierje mishrash", "price": 4, "image": "assets/images/somun.jpeg" },
-    { "id": "somun_mix_3", "name": "Somun Mix i Madh", "description": "Përzierje mishrash", "price": 5, "image": "assets/images/somun.jpeg" }
+    { "id": "somun_mix_1", "name": "Somun Mix i Vogel", "description": "Përzierje mishrash", "price": 3.5, "image": "assets/images/somun.jpeg" },
+    { "id": "somun_mix_2", "name": "Somun Mix i Mesem", "description": "Përzierje mishrash", "price": 5, "image": "assets/images/somun.jpeg" },
+    { "id": "somun_mix_3", "name": "Somun Mix i Madh", "description": "Përzierje mishrash", "price": 7, "image": "assets/images/somun.jpeg" }
   ],
   "Sendviq": [
     { "id": "sendviq_pershut", "name": "Sendviq Përshut", "description": "Sendviq me përshut", "price": 2.5, "image": "assets/images/sendviq-pershut.png" },
