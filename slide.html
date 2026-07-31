@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="sq">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>LORI — Slider TV</title>
+    <link rel="icon" href="assets/images/logo.png" />
+    <link rel="stylesheet" href="slide.css" />
+  </head>
+  <body>
+    <div id="slideApp" class="slide-app">
+      <div class="slide-brand">
+        <img src="assets/images/logo.png" alt="LORI" class="slide-brand-logo" />
+        <span>LORI Pizzeria</span>
+      </div>
+
+      <div id="slideStage" class="slide-stage" aria-live="polite">
+        <div class="slide-card" id="slideCard">
+          <img id="slideImg" class="slide-img" src="" alt="" />
+          <div class="slide-overlay">
+            <span id="slideCategory" class="slide-category"></span>
+            <h1 id="slideName" class="slide-name"></h1>
+            <p id="slideDesc" class="slide-desc"></p>
+            <div id="slidePrice" class="slide-price"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-meta">
+        <span id="slideCounter">1 / 1</span>
+      </div>
+
+      <div id="slideControls" class="slide-controls">
+        <button type="button" id="btnPrev" class="slide-btn" title="Para">‹</button>
+        <button type="button" id="btnPause" class="slide-btn" title="Pause / Play">⏸</button>
+        <button type="button" id="btnNext" class="slide-btn" title="Tjetra">›</button>
+        <button type="button" id="btnFullscreen" class="slide-btn slide-btn-wide">
+          Full screen
+        </button>
+        <button type="button" id="btnDownload" class="slide-btn slide-btn-wide slide-btn-accent">
+          Shkarko për USB
+        </button>
+      </div>
+
+      <div id="slideHint" class="slide-hint">
+        Hapet online në TV: <strong>picerialori.com/slide</strong>
+        · Ose shkarko ZIP për USB (smart TV / Android box / laptop)
+      </div>
+
+      <div id="downloadToast" class="slide-toast" hidden></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="slide.js"></script>
+  </body>
+</html>

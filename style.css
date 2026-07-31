@@ -530,6 +530,24 @@
   gap: 0.7rem;
   justify-content: flex-end;
 }
+.footer-slider-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.55rem 1.2rem;
+  background: #fff;
+  color: #ff9800;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: background 0.18s, color 0.18s, transform 0.15s;
+}
+.footer-slider-btn:hover {
+  background: #fff8e1;
+  color: #e65100;
+  transform: translateY(-1px);
+}
 /* Navbar links styled like cart button */
 .nav-link {
   color: var(--primary);
