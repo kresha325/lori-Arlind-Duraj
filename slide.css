@@ -7,7 +7,9 @@
 html,
 body {
   margin: 0;
+  width: 100%;
   height: 100%;
+  height: 100dvh;
   background: #0c0c0c;
   color: #fff;
   font-family: "Segoe UI", system-ui, sans-serif;
@@ -19,36 +21,82 @@ body.show-cursor {
   cursor: default;
 }
 
-body.show-cursor .slide-controls,
-body.show-cursor .slide-hint {
+body.show-cursor .slide-controls {
   opacity: 1;
   pointer-events: auto;
 }
 
+/* Big gate so Chrome UI can be dismissed via Fullscreen API */
+.fs-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(4px);
+}
+
+.fs-gate.is-hidden {
+  display: none;
+}
+
+.fs-gate-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 1.1rem 2.4rem;
+  background: #ff9800;
+  color: #111;
+  font-size: clamp(1.2rem, 3.5vw, 2rem);
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+.fs-gate-btn:hover {
+  background: #ffa726;
+}
+
+.fs-gate-note {
+  margin: 0;
+  max-width: 28rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(0.9rem, 2vw, 1.15rem);
+  line-height: 1.4;
+}
+
 .slide-app {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  max-height: 100dvh;
   background: #0c0c0c;
+  overflow: hidden;
 }
 
 .slide-brand {
   position: absolute;
-  top: 1.2rem;
-  left: 1.4rem;
+  top: max(0.7rem, env(safe-area-inset-top));
+  left: max(0.9rem, env(safe-area-inset-left));
   z-index: 5;
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.5rem;
   font-weight: 700;
-  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-size: clamp(0.85rem, 2vmin, 1.2rem);
   letter-spacing: 0.04em;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
 }
 
 .slide-brand-logo {
-  width: 42px;
-  height: 42px;
+  width: clamp(28px, 4.5vmin, 40px);
+  height: clamp(28px, 4.5vmin, 40px);
   object-fit: contain;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
 }
@@ -61,11 +109,8 @@ body.show-cursor .slide-hint {
 .slide-card {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
   opacity: 1;
-  transition: opacity 0.55s ease;
+  transition: opacity 0.45s ease;
 }
 
 .slide-card.is-fading {
@@ -78,11 +123,8 @@ body.show-cursor .slide-hint {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   background: #111;
-}
-
-.slide-img::after {
-  content: none;
 }
 
 .slide-overlay {
@@ -90,57 +132,66 @@ body.show-cursor .slide-hint {
   left: 0;
   right: 0;
   bottom: 0;
-  padding: clamp(1.5rem, 4vw, 3.5rem) clamp(1.4rem, 5vw, 4rem)
-    clamp(3.5rem, 8vh, 5.5rem);
+  z-index: 2;
+  /* Keep text fully inside TV + browser viewport */
+  max-height: 46%;
+  padding: 1.2rem clamp(1rem, 3.5vw, 2.5rem)
+    max(1rem, env(safe-area-inset-bottom));
+  padding-top: 3.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.92) 0%,
-    rgba(0, 0, 0, 0.72) 45%,
+    rgba(0, 0, 0, 0.94) 0%,
+    rgba(0, 0, 0, 0.78) 55%,
     rgba(0, 0, 0, 0) 100%
   );
-  z-index: 2;
 }
 
 .slide-category {
   display: inline-block;
-  margin-bottom: 0.55rem;
-  padding: 0.28rem 0.85rem;
+  align-self: flex-start;
+  margin-bottom: 0.35rem;
+  padding: 0.22rem 0.7rem;
   border-radius: 999px;
   background: rgba(255, 152, 0, 0.95);
   color: #111;
-  font-size: clamp(0.85rem, 1.6vw, 1.1rem);
+  font-size: clamp(0.75rem, 2vmin, 1rem);
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
 .slide-name {
-  margin: 0 0 0.4rem;
-  font-size: clamp(2rem, 5.5vw, 4.4rem);
-  line-height: 1.08;
+  margin: 0 0 0.25rem;
+  font-size: clamp(1.45rem, 5.2vmin, 3.4rem);
+  line-height: 1.05;
   font-weight: 800;
   text-shadow: 0 3px 18px rgba(0, 0, 0, 0.55);
 }
 
 .slide-desc {
-  margin: 0 0 0.9rem;
-  max-width: 28ch;
-  font-size: clamp(1rem, 2.2vw, 1.55rem);
+  margin: 0 0 0.55rem;
+  max-width: 34ch;
+  font-size: clamp(0.85rem, 2.2vmin, 1.25rem);
   color: rgba(255, 255, 255, 0.88);
-  line-height: 1.35;
+  line-height: 1.3;
 }
 
 .slide-price {
-  font-size: clamp(2.2rem, 6vw, 4.8rem);
+  font-size: clamp(1.6rem, 5.5vmin, 3.4rem);
   font-weight: 800;
   color: #ff9800;
   text-shadow: 0 3px 16px rgba(0, 0, 0, 0.5);
+  line-height: 1.05;
 }
 
 .slide-price-multi {
   display: flex;
-  flex-wrap: wrap;
-  gap: clamp(0.9rem, 3vw, 2.2rem);
+  flex-wrap: nowrap;
+  gap: clamp(0.7rem, 2.5vw, 1.8rem);
   align-items: flex-end;
   font-size: inherit;
 }
@@ -148,12 +199,12 @@ body.show-cursor .slide-hint {
 .slide-price-item {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
-  min-width: 5.5rem;
+  gap: 0.1rem;
+  min-width: 0;
 }
 
 .slide-price-label {
-  font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+  font-size: clamp(0.75rem, 1.8vmin, 1.05rem);
   font-weight: 700;
   color: rgba(255, 255, 255, 0.85);
   letter-spacing: 0.02em;
@@ -161,7 +212,7 @@ body.show-cursor .slide-hint {
 }
 
 .slide-price-value {
-  font-size: clamp(1.8rem, 4.5vw, 3.6rem);
+  font-size: clamp(1.35rem, 4.2vmin, 2.8rem);
   font-weight: 800;
   color: #ff9800;
   line-height: 1;
@@ -169,10 +220,10 @@ body.show-cursor .slide-hint {
 
 .slide-meta {
   position: absolute;
-  top: 1.35rem;
-  right: 1.5rem;
+  top: max(0.8rem, env(safe-area-inset-top));
+  right: max(1rem, env(safe-area-inset-right));
   z-index: 5;
-  font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+  font-size: clamp(0.8rem, 2vmin, 1.15rem);
   font-weight: 600;
   opacity: 0.9;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
@@ -181,12 +232,12 @@ body.show-cursor .slide-hint {
 .slide-controls {
   position: absolute;
   left: 50%;
-  bottom: 1.4rem;
+  bottom: max(0.7rem, env(safe-area-inset-bottom));
   transform: translateX(-50%);
   z-index: 8;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
+  gap: 0.45rem;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
@@ -196,12 +247,12 @@ body.show-cursor .slide-hint {
 .slide-btn {
   border: none;
   border-radius: 999px;
-  min-width: 48px;
-  height: 48px;
-  padding: 0 1rem;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 0.9rem;
   background: rgba(20, 20, 20, 0.82);
   color: #fff;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
   cursor: pointer;
   backdrop-filter: blur(8px);
@@ -213,8 +264,8 @@ body.show-cursor .slide-hint {
 }
 
 .slide-btn-wide {
-  font-size: 0.95rem;
-  padding: 0 1.15rem;
+  font-size: 0.9rem;
+  padding: 0 1rem;
 }
 
 .slide-btn-accent {
@@ -225,23 +276,6 @@ body.show-cursor .slide-hint {
 
 .slide-btn-accent:hover {
   background: #ffa726;
-}
-
-.slide-hint {
-  position: absolute;
-  left: 50%;
-  bottom: 5.2rem;
-  transform: translateX(-50%);
-  z-index: 7;
-  width: min(92vw, 720px);
-  text-align: center;
-  font-size: 0.92rem;
-  line-height: 1.4;
-  color: rgba(255, 255, 255, 0.78);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
 
 .slide-toast {
@@ -265,20 +299,7 @@ body.show-cursor .slide-hint {
   display: none;
 }
 
-@media (max-width: 700px) {
-  .slide-controls {
-    bottom: 0.9rem;
-    gap: 0.4rem;
-  }
-
-  .slide-btn {
-    min-width: 42px;
-    height: 42px;
-    font-size: 1.05rem;
-  }
-
-  .slide-hint {
-    bottom: 4.4rem;
-    font-size: 0.8rem;
-  }
+/* When not fullscreen, keep a little bottom safe space for Chrome UI */
+body:not(.is-fullscreen) .slide-overlay {
+  padding-bottom: max(1.2rem, env(safe-area-inset-bottom));
 }

@@ -16,6 +16,8 @@
     btnPause: document.getElementById('btnPause'),
     btnFullscreen: document.getElementById('btnFullscreen'),
     btnDownload: document.getElementById('btnDownload'),
+    fsGate: document.getElementById('fsGate'),
+    btnEnterFs: document.getElementById('btnEnterFs'),
   };
 
   let products = [];
@@ -295,16 +297,96 @@
     }
   }
 
-  function toggleFullscreen() {
-    const root = document.documentElement;
-    if (!document.fullscreenElement) {
-      root.requestFullscreen?.() || root.webkitRequestFullscreen?.();
-    } else {
-      document.exitFullscreen?.() || document.webkitExitFullscreen?.();
+  function isFullscreen() {
+    return !!(
+      document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.msFullscreenElement
+    );
+  }
+
+  function updateFsUi() {
+    const on = isFullscreen();
+    document.body.classList.toggle('is-fullscreen', on);
+    if (els.fsGate) els.fsGate.classList.toggle('is-hidden', on);
+    if (els.btnFullscreen) {
+      els.btnFullscreen.textContent = on ? 'Dil full screen' : 'Full screen';
     }
   }
 
+  async function enterFullscreen() {
+    if (isFullscreen()) {
+      updateFsUi();
+      return true;
+    }
+    const root = document.documentElement;
+    try {
+      if (root.requestFullscreen) await root.requestFullscreen();
+      else if (root.webkitRequestFullscreen) await Promise.resolve(root.webkitRequestFullscreen());
+      else if (root.msRequestFullscreen) await Promise.resolve(root.msRequestFullscreen());
+      else {
+        // No Fullscreen API — hide gate and fit viewport as best effort
+        document.body.classList.add('is-fullscreen');
+        if (els.fsGate) els.fsGate.classList.add('is-hidden');
+        return false;
+      }
+      updateFsUi();
+      return isFullscreen();
+    } catch (err) {
+      // Chrome blocks without gesture; keep gate visible until click
+      updateFsUi();
+      return false;
+    }
+  }
+
+  async function exitFullscreen() {
+    try {
+      if (document.exitFullscreen) await document.exitFullscreen();
+      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      else if (document.msExitFullscreen) document.msExitFullscreen();
+    } catch (err) {}
+    updateFsUi();
+  }
+
+  async function toggleFullscreen() {
+    if (isFullscreen()) await exitFullscreen();
+    else await enterFullscreen();
+  }
+
+  function setupAutoFullscreen() {
+    updateFsUi();
+
+    // Try immediately (some TV/kiosk browsers allow it)
+    enterFullscreen();
+    setTimeout(() => enterFullscreen(), 400);
+    setTimeout(() => enterFullscreen(), 1200);
+
+    // Any first interaction → fullscreen (Chrome requires this)
+    const onGesture = () => {
+      if (!isFullscreen()) enterFullscreen();
+    };
+    ['pointerdown', 'touchstart', 'keydown', 'click'].forEach((evt) => {
+      document.addEventListener(evt, onGesture, { capture: true, passive: true });
+    });
+
+    if (els.btnEnterFs) {
+      els.btnEnterFs.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        enterFullscreen();
+      });
+    }
+    if (els.fsGate) {
+      els.fsGate.addEventListener('click', () => enterFullscreen());
+    }
+
+    document.addEventListener('fullscreenchange', updateFsUi);
+    document.addEventListener('webkitfullscreenchange', updateFsUi);
+  }
+
   async function init() {
+    setupAutoFullscreen();
+
     try {
       const data = await loadMenu();
       products = flattenMenu(data);
@@ -332,7 +414,10 @@
     els.btnPrev.addEventListener('click', () => go(-1));
     els.btnNext.addEventListener('click', () => go(1));
     els.btnPause.addEventListener('click', togglePause);
-    els.btnFullscreen.addEventListener('click', toggleFullscreen);
+    els.btnFullscreen.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleFullscreen();
+    });
     els.btnDownload.addEventListener('click', downloadForUSB);
 
     document.addEventListener('mousemove', revealCursor);

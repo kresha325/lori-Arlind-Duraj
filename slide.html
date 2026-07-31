@@ -2,13 +2,20 @@
 <html lang="sq">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="robots" content="noindex" />
     <title>LORI — Slider TV</title>
     <link rel="icon" href="assets/images/logo.png" />
     <link rel="stylesheet" href="slide.css" />
   </head>
   <body>
+    <div id="fsGate" class="fs-gate">
+      <button type="button" id="btnEnterFs" class="fs-gate-btn">
+        Hap Full Screen
+      </button>
+      <p class="fs-gate-note">Chrome e kërkon një klik. Pas kësaj mbetet full screen automatikisht.</p>
+    </div>
+
     <div id="slideApp" class="slide-app">
       <div class="slide-brand">
         <img src="assets/images/logo.png" alt="LORI" class="slide-brand-logo" />
@@ -41,11 +48,6 @@
         <button type="button" id="btnDownload" class="slide-btn slide-btn-wide slide-btn-accent">
           Shkarko për USB
         </button>
-      </div>
-
-      <div id="slideHint" class="slide-hint">
-        Hapet online në TV: <strong>picerialori.com/slide</strong>
-        · Ose shkarko ZIP për USB (smart TV / Android box / laptop)
       </div>
 
       <div id="downloadToast" class="slide-toast" hidden></div>
