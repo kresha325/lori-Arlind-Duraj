@@ -10,16 +10,19 @@
   </head>
   <body>
     <div id="fsGate" class="fs-gate">
-      <button type="button" id="btnEnterFs" class="fs-gate-btn">
-        Hap Full Screen
-      </button>
-      <p class="fs-gate-note">Chrome e kërkon një klik. Pas kësaj mbetet full screen automatikisht.</p>
+      <button type="button" id="btnEnterFs" class="fs-gate-btn">Full Screen</button>
     </div>
 
     <div id="slideApp" class="slide-app">
-      <div class="slide-brand">
-        <img src="assets/images/logo.png" alt="LORI" class="slide-brand-logo" />
-        <span>LORI Pizzeria</span>
+      <div class="slide-top">
+        <div class="slide-brand">
+          <img src="assets/images/logo.png" alt="LORI" class="slide-brand-logo" />
+          <span>LORI Pizzeria</span>
+        </div>
+        <button type="button" id="btnFullscreen" class="slide-fs-btn">Full Screen</button>
+        <div class="slide-meta">
+          <span id="slideCounter">1 / 1</span>
+        </div>
       </div>
 
       <div id="slideStage" class="slide-stage" aria-live="polite">
@@ -28,32 +31,14 @@
           <div class="slide-overlay">
             <span id="slideCategory" class="slide-category"></span>
             <h1 id="slideName" class="slide-name"></h1>
-            <p id="slideDesc" class="slide-desc"></p>
             <div id="slidePrice" class="slide-price"></div>
           </div>
         </div>
       </div>
 
-      <div class="slide-meta">
-        <span id="slideCounter">1 / 1</span>
-      </div>
-
-      <div id="slideControls" class="slide-controls">
-        <button type="button" id="btnPrev" class="slide-btn" title="Para">‹</button>
-        <button type="button" id="btnPause" class="slide-btn" title="Pause / Play">⏸</button>
-        <button type="button" id="btnNext" class="slide-btn" title="Tjetra">›</button>
-        <button type="button" id="btnFullscreen" class="slide-btn slide-btn-wide">
-          Full screen
-        </button>
-        <button type="button" id="btnDownload" class="slide-btn slide-btn-wide slide-btn-accent">
-          Shkarko për USB
-        </button>
-      </div>
-
       <div id="downloadToast" class="slide-toast" hidden></div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="slide.js"></script>
   </body>
 </html>

@@ -7,15 +7,10 @@
     img: document.getElementById('slideImg'),
     category: document.getElementById('slideCategory'),
     name: document.getElementById('slideName'),
-    desc: document.getElementById('slideDesc'),
     price: document.getElementById('slidePrice'),
     counter: document.getElementById('slideCounter'),
     toast: document.getElementById('downloadToast'),
-    btnPrev: document.getElementById('btnPrev'),
-    btnNext: document.getElementById('btnNext'),
-    btnPause: document.getElementById('btnPause'),
     btnFullscreen: document.getElementById('btnFullscreen'),
-    btnDownload: document.getElementById('btnDownload'),
     fsGate: document.getElementById('fsGate'),
     btnEnterFs: document.getElementById('btnEnterFs'),
   };
@@ -26,7 +21,6 @@
   let slideTimer = null;
   let fadeTimer = null;
   let cursorTimer = null;
-  let menuData = null;
 
   function flattenMenu(data) {
     const SIZE_RE = /\s+(e|i)\s+(Vogel|Vogël|Mesme|Mesem|Madhe|Madh)$/i;
@@ -53,7 +47,6 @@
         if (!groups.has(key)) {
           groups.set(key, {
             name: base,
-            description: item.description,
             image: item.image,
             category,
             prices: [],
@@ -103,6 +96,7 @@
   }
 
   function showToast(msg, ms) {
+    if (!els.toast) return;
     els.toast.hidden = false;
     els.toast.textContent = msg;
     clearTimeout(showToast._t);
@@ -122,6 +116,15 @@
     });
   }
 
+  function paintItem(item) {
+    els.img.src = item.image;
+    els.img.alt = item.name;
+    els.category.textContent = item.category || '';
+    els.name.textContent = item.name || '';
+    renderPrices(item);
+    els.counter.textContent = `${index + 1} / ${products.length}`;
+  }
+
   function renderSlide() {
     const item = products[index];
     if (!item) return;
@@ -130,13 +133,7 @@
     clearTimeout(fadeTimer);
     els.card.classList.add('is-fading');
     fadeTimer = setTimeout(() => {
-      els.img.src = item.image;
-      els.img.alt = item.name;
-      els.category.textContent = item.category || '';
-      els.name.textContent = item.name || '';
-      els.desc.textContent = item.description || '';
-      renderPrices(item);
-      els.counter.textContent = `${index + 1} / ${products.length}`;
+      paintItem(item);
       els.card.classList.remove('is-fading');
       preloadNeighbors();
       restartSlideTimer();
@@ -163,7 +160,6 @@
 
   function togglePause() {
     paused = !paused;
-    els.btnPause.textContent = paused ? '▶' : '⏸';
     if (paused) stopSlideTimer();
     else restartSlideTimer();
   }
@@ -177,124 +173,10 @@
   }
 
   async function loadMenu() {
-    if (window.MENU_DATA) {
-      menuData = window.MENU_DATA;
-      return menuData;
-    }
+    if (window.MENU_DATA) return window.MENU_DATA;
     const res = await fetch('assets/data/menu.json', { cache: 'no-store' });
     if (!res.ok) throw new Error('Menu nuk u ngarkua');
-    menuData = await res.json();
-    return menuData;
-  }
-
-  async function loadScriptText(url) {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error('Nuk u gjet: ' + url);
-    return res.text();
-  }
-
-  async function loadBinary(url) {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error('Nuk u gjet: ' + url);
-    return res.arrayBuffer();
-  }
-
-  async function downloadForUSB() {
-    if (typeof JSZip === 'undefined') {
-      showToast('JSZip nuk u ngarkua. Kontrollo internetin dhe provo përsëri.');
-      return;
-    }
-    if (!menuData) {
-      showToast('Menuja nuk është gati ende.');
-      return;
-    }
-
-    els.btnDownload.disabled = true;
-    showToast('Duke përgatitur ZIP për USB…', 60000);
-
-    try {
-      const zip = new JSZip();
-      const [htmlTpl, cssText, jsText] = await Promise.all([
-        loadScriptText('slide.html'),
-        loadScriptText('slide.css'),
-        loadScriptText('slide.js'),
-      ]);
-
-      // Offline package: embed menu so file:// works without fetch
-      const offlineHtml = htmlTpl
-        .replace(
-          '<script src="slide.js"></script>',
-          `<script>window.MENU_DATA = ${JSON.stringify(menuData)};</script>\n    <script src="slide.js"></script>`
-        )
-        .replace(
-          '<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>',
-          '<!-- JSZip omitted in offline package -->'
-        );
-
-      zip.file('slide.html', offlineHtml);
-      zip.file('slide.css', cssText);
-      zip.file('slide.js', jsText);
-      zip.file('assets/data/menu.json', JSON.stringify(menuData, null, 2));
-      zip.file(
-        'LESOMua.txt',
-        [
-          'LORI TV Slider — paketa për USB',
-          '',
-          '1. Nxirr (extract) këtë ZIP në USB.',
-          '2. Hap slide.html me Chrome / browser në:',
-          '   - Smart TV me browser',
-          '   - Firestick / Android TV box',
-          '   - Laptop të lidhur me HDMI te TV',
-          '',
-          'Shënim: TV klasik që lexon vetëm foto/video NUK hap HTML.',
-          'Alternativë e thjeshtë: hap picerialori.com/slide në browser të TV.',
-          '',
-          'Kontrollet: shigjetat ← → , hapësirë = pause, F = full screen.',
-        ].join('\n')
-      );
-
-      const imagePaths = [
-        ...new Set(
-          products
-            .map((p) => p.image)
-            .concat(['assets/images/logo.png'])
-            .filter(Boolean)
-        ),
-      ];
-
-      let done = 0;
-      for (const path of imagePaths) {
-        try {
-          const buf = await loadBinary(path);
-          zip.file(path, buf);
-        } catch (e) {
-          console.warn('Skip image', path, e);
-        }
-        done += 1;
-        showToast(`Duke shkarkuar foto… ${done}/${imagePaths.length}`, 60000);
-      }
-
-      const blob = await zip.generateAsync({
-        type: 'blob',
-        compression: 'DEFLATE',
-        compressionOptions: { level: 6 },
-      });
-
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'lori-tv-slider.zip';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
-
-      showToast('U shkarkua lori-tv-slider.zip — nxirre në USB dhe hap slide.html');
-    } catch (err) {
-      console.error(err);
-      showToast('Shkarkimi dështoi. Provo përsëri nga sajti online.');
-    } finally {
-      els.btnDownload.disabled = false;
-    }
+    return res.json();
   }
 
   function isFullscreen() {
@@ -310,7 +192,7 @@
     document.body.classList.toggle('is-fullscreen', on);
     if (els.fsGate) els.fsGate.classList.toggle('is-hidden', on);
     if (els.btnFullscreen) {
-      els.btnFullscreen.textContent = on ? 'Dil full screen' : 'Full screen';
+      els.btnFullscreen.textContent = on ? 'Dil' : 'Full Screen';
     }
   }
 
@@ -322,10 +204,11 @@
     const root = document.documentElement;
     try {
       if (root.requestFullscreen) await root.requestFullscreen();
-      else if (root.webkitRequestFullscreen) await Promise.resolve(root.webkitRequestFullscreen());
-      else if (root.msRequestFullscreen) await Promise.resolve(root.msRequestFullscreen());
+      else if (root.webkitRequestFullscreen)
+        await Promise.resolve(root.webkitRequestFullscreen());
+      else if (root.msRequestFullscreen)
+        await Promise.resolve(root.msRequestFullscreen());
       else {
-        // No Fullscreen API — hide gate and fit viewport as best effort
         document.body.classList.add('is-fullscreen');
         if (els.fsGate) els.fsGate.classList.add('is-hidden');
         return false;
@@ -333,7 +216,6 @@
       updateFsUi();
       return isFullscreen();
     } catch (err) {
-      // Chrome blocks without gesture; keep gate visible until click
       updateFsUi();
       return false;
     }
@@ -355,13 +237,10 @@
 
   function setupAutoFullscreen() {
     updateFsUi();
-
-    // Try immediately (some TV/kiosk browsers allow it)
     enterFullscreen();
     setTimeout(() => enterFullscreen(), 400);
     setTimeout(() => enterFullscreen(), 1200);
 
-    // Any first interaction → fullscreen (Chrome requires this)
     const onGesture = () => {
       if (!isFullscreen()) enterFullscreen();
     };
@@ -395,15 +274,7 @@
         return;
       }
       index = 0;
-      // First paint without fade delay
-      const item = products[0];
-      els.img.src = item.image;
-      els.img.alt = item.name;
-      els.category.textContent = item.category || '';
-      els.name.textContent = item.name || '';
-      els.desc.textContent = item.description || '';
-      renderPrices(item);
-      els.counter.textContent = `1 / ${products.length}`;
+      paintItem(products[0]);
       preloadNeighbors();
       restartSlideTimer();
     } catch (err) {
@@ -411,14 +282,12 @@
       showToast('Gabim: menuja nuk u ngarkua.');
     }
 
-    els.btnPrev.addEventListener('click', () => go(-1));
-    els.btnNext.addEventListener('click', () => go(1));
-    els.btnPause.addEventListener('click', togglePause);
-    els.btnFullscreen.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleFullscreen();
-    });
-    els.btnDownload.addEventListener('click', downloadForUSB);
+    if (els.btnFullscreen) {
+      els.btnFullscreen.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleFullscreen();
+      });
+    }
 
     document.addEventListener('mousemove', revealCursor);
     document.addEventListener('touchstart', revealCursor, { passive: true });
