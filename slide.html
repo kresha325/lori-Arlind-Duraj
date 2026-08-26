@@ -8,17 +8,13 @@
     <link rel="icon" href="assets/images/logo.png" />
     <link rel="stylesheet" href="slide.css" />
   </head>
-  <body>
+  <body class="slide-fullbleed">
     <div id="fsGate" class="fs-gate">
       <button type="button" id="btnEnterFs" class="fs-gate-btn">Full Screen</button>
     </div>
 
     <div id="slideApp" class="slide-app">
-      <div class="slide-top">
-        <div class="slide-brand">
-          <img src="assets/images/logo.png" alt="LORI" class="slide-brand-logo" />
-          <span>LORI Pizzeria</span>
-        </div>
+      <div class="slide-top slide-top-minimal">
         <button type="button" id="btnFullscreen" class="slide-fs-btn">Full Screen</button>
         <div class="slide-meta">
           <span id="slideCounter">1 / 1</span>
@@ -28,11 +24,7 @@
       <div id="slideStage" class="slide-stage" aria-live="polite">
         <div class="slide-card" id="slideCard">
           <img id="slideImg" class="slide-img" src="" alt="" />
-          <div class="slide-overlay">
-            <span id="slideCategory" class="slide-category"></span>
-            <h1 id="slideName" class="slide-name"></h1>
-            <div id="slidePrice" class="slide-price"></div>
-          </div>
+          <div id="slidePriceCard" class="slide-price-card" hidden></div>
         </div>
       </div>
 

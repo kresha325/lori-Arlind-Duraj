@@ -5,9 +5,7 @@
   const els = {
     card: document.getElementById('slideCard'),
     img: document.getElementById('slideImg'),
-    category: document.getElementById('slideCategory'),
-    name: document.getElementById('slideName'),
-    price: document.getElementById('slidePrice'),
+    priceCard: document.getElementById('slidePriceCard'),
     counter: document.getElementById('slideCounter'),
     toast: document.getElementById('downloadToast'),
     btnFullscreen: document.getElementById('btnFullscreen'),
@@ -15,85 +13,12 @@
     btnEnterFs: document.getElementById('btnEnterFs'),
   };
 
-  let products = [];
+  let slides = [];
   let index = 0;
   let paused = false;
   let slideTimer = null;
   let fadeTimer = null;
   let cursorTimer = null;
-
-  function flattenMenu(data) {
-    const SIZE_RE = /\s+(e|i)\s+(Vogel|Vogël|Mesme|Mesem|Madhe|Madh)$/i;
-
-    function sizeLabel(raw) {
-      const s = String(raw).toLowerCase();
-      if (s.startsWith('vog')) return 'Vogël';
-      if (s.startsWith('mes')) return 'Mesme';
-      if (s.startsWith('mad')) return 'Madhe';
-      return raw;
-    }
-
-    const groups = new Map();
-    const order = [];
-
-    Object.keys(data).forEach((category) => {
-      (data[category] || []).forEach((item) => {
-        const match = item.name.match(SIZE_RE);
-        const base = match
-          ? item.name.replace(SIZE_RE, '').trim()
-          : item.name;
-        const key = category + '|' + base.toLowerCase();
-
-        if (!groups.has(key)) {
-          groups.set(key, {
-            name: base,
-            image: item.image,
-            category,
-            prices: [],
-          });
-          order.push(key);
-        }
-
-        const group = groups.get(key);
-        if (match) {
-          group.prices.push({
-            label: sizeLabel(match[2]),
-            price: item.price,
-          });
-        } else {
-          group.prices.push({ label: null, price: item.price });
-        }
-      });
-    });
-
-    return order.map((key) => groups.get(key));
-  }
-
-  function formatPrice(price) {
-    return Number(price).toFixed(2) + '€';
-  }
-
-  function renderPrices(item) {
-    const prices = item.prices || [{ label: null, price: item.price }];
-    const hasSizes = prices.length > 1 || (prices[0] && prices[0].label);
-
-    if (!hasSizes) {
-      els.price.className = 'slide-price';
-      els.price.textContent = formatPrice(prices[0].price);
-      return;
-    }
-
-    els.price.className = 'slide-price slide-price-multi';
-    els.price.innerHTML = prices
-      .map(
-        (p) =>
-          `<div class="slide-price-item">` +
-          `<span class="slide-price-label">${p.label || ''}</span>` +
-          `<span class="slide-price-value">${formatPrice(p.price)}</span>` +
-          `</div>`
-      )
-      .join('');
-  }
 
   function showToast(msg, ms) {
     if (!els.toast) return;
@@ -106,9 +31,9 @@
   }
 
   function preloadNeighbors() {
-    if (!products.length) return;
-    const next = products[(index + 1) % products.length];
-    const prev = products[(index - 1 + products.length) % products.length];
+    if (!slides.length) return;
+    const next = slides[(index + 1) % slides.length];
+    const prev = slides[(index - 1 + slides.length) % slides.length];
     [next, prev].forEach((item) => {
       if (!item || !item.image) return;
       const img = new Image();
@@ -116,17 +41,47 @@
     });
   }
 
+  function formatPrice(price) {
+    return Number(price).toFixed(2) + '€';
+  }
+
+  function renderPrices(item) {
+    const card = els.priceCard;
+    if (!card) return;
+    const prices = item.prices || [];
+    if (!prices.length) {
+      card.hidden = true;
+      card.innerHTML = '';
+      return;
+    }
+
+    const multi = prices.length > 1 || (prices[0] && prices[0].label);
+    card.className = 'slide-price-card' + (multi ? '' : ' is-single');
+    card.hidden = false;
+    card.innerHTML = prices
+      .map((p) => {
+        const label = p.label
+          ? `<span class="slide-price-label">${p.label}</span>`
+          : '';
+        return (
+          `<div class="slide-price-row">` +
+          label +
+          `<span class="slide-price-value">${formatPrice(p.price)}</span>` +
+          `</div>`
+        );
+      })
+      .join('');
+  }
+
   function paintItem(item) {
     els.img.src = item.image;
-    els.img.alt = item.name;
-    els.category.textContent = item.category || '';
-    els.name.textContent = item.name || '';
+    els.img.alt = item.id || 'LORI';
+    els.counter.textContent = `${index + 1} / ${slides.length}`;
     renderPrices(item);
-    els.counter.textContent = `${index + 1} / ${products.length}`;
   }
 
   function renderSlide() {
-    const item = products[index];
+    const item = slides[index];
     if (!item) return;
 
     stopSlideTimer();
@@ -152,9 +107,9 @@
   }
 
   function go(delta) {
-    if (!products.length) return;
+    if (!slides.length) return;
     stopSlideTimer();
-    index = (index + delta + products.length) % products.length;
+    index = (index + delta + slides.length) % slides.length;
     renderSlide();
   }
 
@@ -172,10 +127,10 @@
     }, CURSOR_IDLE_MS);
   }
 
-  async function loadMenu() {
-    if (window.MENU_DATA) return window.MENU_DATA;
-    const res = await fetch('assets/data/menu.json', { cache: 'no-store' });
-    if (!res.ok) throw new Error('Menu nuk u ngarkua');
+  async function loadSlides() {
+    if (window.SLIDES_DATA) return window.SLIDES_DATA;
+    const res = await fetch('assets/data/slides.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('Slides nuk u ngarkuan');
     return res.json();
   }
 
@@ -267,19 +222,18 @@
     setupAutoFullscreen();
 
     try {
-      const data = await loadMenu();
-      products = flattenMenu(data);
-      if (!products.length) {
-        showToast('Nuk ka produkte në menu.');
+      slides = await loadSlides();
+      if (!slides.length) {
+        showToast('Nuk ka slide.');
         return;
       }
       index = 0;
-      paintItem(products[0]);
+      paintItem(slides[0]);
       preloadNeighbors();
       restartSlideTimer();
     } catch (err) {
       console.error(err);
-      showToast('Gabim: menuja nuk u ngarkua.');
+      showToast('Gabim: slides nuk u ngarkuan.');
     }
 
     if (els.btnFullscreen) {

@@ -1,0 +1,400 @@
+[
+  {
+    "id": "pizza_margarita",
+    "image": "assets/images/slides/01_pizza_margarita.png",
+    "prices": [
+      {
+        "label": "Vogël",
+        "price": 2.5
+      },
+      {
+        "label": "Mesme",
+        "price": 3.5
+      },
+      {
+        "label": "Madhe",
+        "price": 5
+      }
+    ]
+  },
+  {
+    "id": "pizza_pershut",
+    "image": "assets/images/slides/02_pizza_pershut.png",
+    "prices": [
+      {
+        "label": "Vogël",
+        "price": 3
+      },
+      {
+        "label": "Mesme",
+        "price": 4
+      },
+      {
+        "label": "Madhe",
+        "price": 5
+      }
+    ]
+  },
+  {
+    "id": "pizza_fungi",
+    "image": "assets/images/slides/03_pizza_fungi.png",
+    "prices": [
+      {
+        "label": "Vogël",
+        "price": 3
+      },
+      {
+        "label": "Mesme",
+        "price": 4
+      },
+      {
+        "label": "Madhe",
+        "price": 5
+      }
+    ]
+  },
+  {
+    "id": "pizza_vegeteriana",
+    "image": "assets/images/slides/04_pizza_vegeteriana.png",
+    "prices": [
+      {
+        "label": "Vogël",
+        "price": 3
+      },
+      {
+        "label": "Mesme",
+        "price": 4
+      },
+      {
+        "label": "Madhe",
+        "price": 5
+      }
+    ]
+  },
+  {
+    "id": "pizza_tuna",
+    "image": "assets/images/slides/05_pizza_tuna.png",
+    "prices": [
+      {
+        "label": "Vogël",
+        "price": 3.5
+      },
+      {
+        "label": "Mesme",
+        "price": 5
+      },
+      {
+        "label": "Madhe",
+        "price": 6
+      }
+    ]
+  },
+  {
+    "id": "pizza_lori",
+    "image": "assets/images/slides/06_pizza_lori.png",
+    "prices": [
+      {
+        "label": "Vogël",
+        "price": 3.5
+      },
+      {
+        "label": "Mesme",
+        "price": 5
+      },
+      {
+        "label": "Madhe",
+        "price": 7
+      }
+    ]
+  },
+  {
+    "id": "somun_pershut",
+    "image": "assets/images/slides/07_somun_pershut.png",
+    "prices": [
+      {
+        "label": "Vogël",
+        "price": 3
+      },
+      {
+        "label": "Mesme",
+        "price": 4
+      },
+      {
+        "label": "Madhe",
+        "price": 5
+      }
+    ]
+  },
+  {
+    "id": "somun_suxhuk",
+    "image": "assets/images/slides/08_somun_suxhuk.png",
+    "prices": [
+      {
+        "label": "Vogël",
+        "price": 3
+      },
+      {
+        "label": "Mesme",
+        "price": 4
+      },
+      {
+        "label": "Madhe",
+        "price": 5
+      }
+    ]
+  },
+  {
+    "id": "somun_mix",
+    "image": "assets/images/slides/09_somun_mix.png",
+    "prices": [
+      {
+        "label": "Vogël",
+        "price": 3.5
+      },
+      {
+        "label": "Mesme",
+        "price": 5
+      },
+      {
+        "label": "Madhe",
+        "price": 7
+      }
+    ]
+  },
+  {
+    "id": "sendviq_pershut",
+    "image": "assets/images/slides/10_sendviq_pershut.png",
+    "prices": [
+      {
+        "label": null,
+        "price": 2.5
+      }
+    ]
+  },
+  {
+    "id": "sendviq_pule",
+    "image": "assets/images/slides/11_sendviq_pule.png",
+    "prices": [
+      {
+        "label": null,
+        "price": 2.5
+      }
+    ]
+  },
+  {
+    "id": "pide_pershut",
+    "image": "assets/images/slides/12_pide_pershut.png",
+    "prices": [
+      {
+        "label": null,
+        "price": 3.5
+      }
+    ]
+  },
+  {
+    "id": "pide_suxhuk",
+    "image": "assets/images/slides/13_pide_suxhuk.png",
+    "prices": [
+      {
+        "label": null,
+        "price": 3.5
+      }
+    ]
+  },
+  {
+    "id": "pide_mish",
+    "image": "assets/images/slides/14_pide_mish.png",
+    "prices": [
+      {
+        "label": null,
+        "price": 4
+      }
+    ]
+  },
+  {
+    "id": "pide_mish_pule",
+    "image": "assets/images/slides/15_pide_mish_pule.png",
+    "prices": [
+      {
+        "label": null,
+        "price": 4
+      }
+    ]
+  },
+  {
+    "id": "hamburger",
+    "image": "assets/images/slides/16_hamburger.png",
+    "prices": [
+      {
+        "label": null,
+        "price": 2
+      }
+    ]
+  },
+  {
+    "id": "qofte_5",
+    "image": "assets/images/slides/17_qofte_5.png",
+    "prices": [
+      {
+        "label": "5 copë",
+        "price": 2.5
+      }
+    ]
+  },
+  {
+    "id": "qebapa_5",
+    "image": "assets/images/slides/18_qebapa_5.png",
+    "prices": [
+      {
+        "label": "5 copë",
+        "price": 2.5
+      }
+    ]
+  },
+  {
+    "id": "qebapa_10",
+    "image": "assets/images/slides/19_qebapa_10.png",
+    "prices": [
+      {
+        "label": "Porcion",
+        "price": 5
+      }
+    ]
+  },
+  {
+    "id": "pleskavic",
+    "image": "assets/images/slides/20_pleskavic.png",
+    "prices": [
+      {
+        "label": null,
+        "price": 2.5
+      }
+    ]
+  },
+  {
+    "id": "pleskavic_sos",
+    "image": "assets/images/slides/21_pleskavic_sos.png",
+    "prices": [
+      {
+        "label": null,
+        "price": 3
+      }
+    ]
+  },
+  {
+    "id": "pleskavic_sharri",
+    "image": "assets/images/slides/22_pleskavic_sharri.png",
+    "prices": [
+      {
+        "label": null,
+        "price": 5
+      }
+    ]
+  },
+  {
+    "id": "file_pule",
+    "image": "assets/images/slides/23_file_pule.png",
+    "prices": [
+      {
+        "label": "1/2",
+        "price": 2.5
+      },
+      {
+        "label": "1",
+        "price": 4
+      },
+      {
+        "label": "me sos",
+        "price": 4.5
+      }
+    ]
+  },
+  {
+    "id": "kombinim",
+    "image": "assets/images/slides/24_kombinim.png",
+    "prices": [
+      {
+        "label": null,
+        "price": 5
+      }
+    ]
+  },
+  {
+    "id": "suxhuk_porcion",
+    "image": "assets/images/slides/25_suxhuk_porcion.png",
+    "prices": [
+      {
+        "label": "Gjysmë",
+        "price": 2.5
+      },
+      {
+        "label": "Porcion",
+        "price": 4
+      }
+    ]
+  },
+  {
+    "id": "sallata_shope",
+    "image": "assets/images/slides/26_sallata_shope.png",
+    "prices": [
+      {
+        "label": null,
+        "price": 2
+      }
+    ]
+  },
+  {
+    "id": "sallata_qobane",
+    "image": "assets/images/slides/27_sallata_qobane.png",
+    "prices": [
+      {
+        "label": null,
+        "price": 2
+      }
+    ]
+  },
+  {
+    "id": "sallata_pule",
+    "image": "assets/images/slides/28_sallata_pule.png",
+    "prices": [
+      {
+        "label": null,
+        "price": 4
+      }
+    ]
+  },
+  {
+    "id": "omlet_pershut",
+    "image": "assets/images/slides/29_omlet_pershut.png",
+    "prices": [
+      {
+        "label": null,
+        "price": 2.5
+      }
+    ]
+  },
+  {
+    "id": "omlet_suxhuk",
+    "image": "assets/images/slides/30_omlet_suxhuk.png",
+    "prices": [
+      {
+        "label": null,
+        "price": 2.5
+      }
+    ]
+  },
+  {
+    "id": "lahmaxhun",
+    "image": "assets/images/slides/31_lahmaxhun.png",
+    "prices": [
+      {
+        "label": "Vogël",
+        "price": 1.5
+      },
+      {
+        "label": "Madhe",
+        "price": 2.5
+      }
+    ]
+  }
+]
