@@ -243,9 +243,15 @@
       });
     }
 
+    document.body.classList.add('show-cursor');
     document.addEventListener('mousemove', revealCursor);
     document.addEventListener('touchstart', revealCursor, { passive: true });
     revealCursor();
+
+    const dl = document.getElementById('btnDownloadMp4');
+    if (dl) {
+      dl.addEventListener('click', (e) => e.stopPropagation());
+    }
 
     document.addEventListener('keydown', (e) => {
       revealCursor();

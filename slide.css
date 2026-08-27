@@ -21,7 +21,8 @@ body.show-cursor {
   cursor: default;
 }
 
-body.show-cursor .slide-fs-btn {
+body.show-cursor .slide-fs-btn,
+body.show-cursor .slide-dl-btn {
   opacity: 1;
   pointer-events: auto;
 }
@@ -121,6 +122,21 @@ body.show-cursor .slide-fs-btn {
   background: #ffa726;
 }
 
+.slide-dl-btn {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  margin-left: 0.5rem;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: 1px solid rgba(255, 179, 0, 0.55);
+}
+
+.slide-dl-btn:hover {
+  background: rgba(255, 152, 0, 0.9);
+  color: #111;
+}
+
 .slide-meta {
   font-size: clamp(1.1rem, 2.8vmin, 1.6rem);
   font-weight: 700;
@@ -140,9 +156,6 @@ body.show-cursor .slide-fs-btn {
   inset: 0;
   opacity: 1;
   transition: opacity 0.45s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: #0c0c0c;
 }
 
@@ -151,20 +164,18 @@ body.show-cursor .slide-fs-btn {
 }
 
 .slide-img {
-  position: relative;
-  inset: auto;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  object-position: center;
-  background: transparent;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  background: #0c0c0c;
 }
 
 body.slide-fullbleed .slide-img {
-  object-fit: contain;
-  background: transparent;
+  object-fit: cover;
+  background: #0c0c0c;
 }
 
 .slide-top-minimal {
@@ -184,22 +195,23 @@ body.slide-fullbleed.is-fullscreen .slide-meta {
   opacity: 0.35;
 }
 
-/* Price plaque — thin bar, bottom center */
+/* Price plaque — thin bar, bottom center, on top of photo */
 .slide-price-card {
   position: absolute;
   left: 50%;
-  bottom: clamp(0.7rem, 2.8vh, 1.6rem);
+  bottom: clamp(0.85rem, 3.2vh, 1.8rem);
   right: auto;
   transform: translateX(-50%);
   z-index: 4;
-  display: flex;
+  display: inline-flex;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  gap: clamp(1.1rem, 3vw, 2.4rem);
+  gap: clamp(0.75rem, 2vw, 1.6rem);
+  box-sizing: border-box;
   width: max-content;
-  max-width: min(94vw, 46rem);
-  padding: clamp(0.32rem, 1vh, 0.55rem) clamp(1rem, 2.8vw, 1.8rem);
+  max-width: calc(100vw - 2rem);
+  padding: 0.4rem 1.1rem;
   background: rgba(28, 16, 8, 0.92);
   border: 1.5px solid #d4a017;
   border-radius: 6px;
@@ -220,22 +232,21 @@ body.slide-fullbleed.is-fullscreen .slide-meta {
   flex-direction: row;
   align-items: baseline;
   justify-content: center;
-  gap: 0.4rem;
+  gap: 0.3rem;
   flex: 0 0 auto;
-  min-width: 0;
 }
 
 .slide-price-label {
-  font-size: clamp(0.7rem, 1.6vmin, 0.95rem);
+  font-size: clamp(0.62rem, 1.35vmin, 0.82rem);
   font-weight: 800;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: rgba(255, 236, 190, 0.9);
   white-space: nowrap;
 }
 
 .slide-price-value {
-  font-size: clamp(1.2rem, 3.2vmin, 1.9rem);
+  font-size: clamp(1.05rem, 2.6vmin, 1.55rem);
   font-weight: 900;
   line-height: 1;
   color: #ffb300;
@@ -245,14 +256,27 @@ body.slide-fullbleed.is-fullscreen .slide-meta {
 }
 
 .slide-price-card.is-single .slide-price-row {
-  min-width: auto;
-  flex-direction: row;
-  align-items: baseline;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .slide-price-card.is-single .slide-price-value {
-  font-size: clamp(1.4rem, 3.6vmin, 2.15rem);
+  font-size: clamp(1.2rem, 3vmin, 1.85rem);
+}
+
+@media (max-width: 700px) {
+  .slide-price-card {
+    gap: 0.55rem;
+    padding: 0.32rem 0.7rem;
+    max-width: calc(100vw - 1rem);
+  }
+
+  .slide-price-label {
+    font-size: 0.58rem;
+  }
+
+  .slide-price-value {
+    font-size: 0.95rem;
+  }
 }
 
 .slide-overlay {

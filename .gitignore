@@ -1,5 +1,7 @@
 
 # Local PDF extraction intermediates
 assets/from-pdf/
+assets/videos/_frames/
+assets/videos/_preview_check.jpg
 .DS_Store
 **/.DS_Store
