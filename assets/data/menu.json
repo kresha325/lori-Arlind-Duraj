@@ -285,7 +285,7 @@
       "id": "pleskavic_sos",
       "name": "Pleskavic me Sos",
       "description": "Pleskavic me salcë speciale",
-      "price": 3,
+      "price": 3.5,
       "image": "assets/images/products/pleskavic_sos.jpg"
     },
     {
@@ -313,7 +313,7 @@
       "id": "file_pule_sos",
       "name": "File Pule me Sos",
       "description": "File pule me salcë",
-      "price": 4.5,
+      "price": 5.0,
       "image": "assets/images/products/file_pule.jpg"
     },
     {
