@@ -302,7 +302,9 @@ const modalAddToCart = document.getElementById('modalAddToCart');
 if (menuGrid && categoryFilter) {
 
   // Load menu data
-  fetch('assets/data/menu.json')
+  fetch(`assets/data/menu.json?v=${Date.now()}`, {
+  cache: 'no-store'
+})
     .then(res => res.json())
     .then(data => {
       menuData = data;
